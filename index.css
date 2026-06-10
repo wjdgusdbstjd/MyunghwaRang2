@@ -1,0 +1,2238 @@
+@font-face {
+    font-family: 'YeogiOttaeJalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'YeogiOttaeJalnan';
+      background: #1a1a2e;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* ── 태블릿 프레임 ── */
+    .app-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .tablet-frame {
+      /* width: 960px;
+      height: 640px; */
+      width: 100%;
+      height: 100%;
+      /* border-radius: 28px; */
+      /* border: 8px solid #2d2d3e; */
+      box-shadow: 0 0 0 2px #444, 0 30px 80px rgba(0, 0, 0, 0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tablet-screen {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── 화면 공통 ── */
+    .screen {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      overflow: hidden;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    /* ══════════════════════════════
+       01. 홈 화면
+    ══════════════════════════════ */
+    #screen-home {
+      position: relative;
+      background-image: url('images/home-main-bg.png');
+      background-size:100%;
+      background-repeat: no-repeat;
+    }
+
+    
+    .home-sun {
+      position: absolute;
+      top: 22px;
+      right: 52px;
+      width: 65px;
+      height: 65px;
+      background: #FFD700;
+      border-radius: 50%;
+      box-shadow: 0 0 28px #FFD70077;
+      z-index: 1;
+      animation: sunPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes sunPulse {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.06)
+      }
+    }
+
+    .home-cloud {
+      position: absolute;
+      background: white;
+      border-radius: 50px;
+      z-index: 1;
+    }
+
+    .home-cloud::before,
+    .home-cloud::after {
+      content: "";
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .c1 {
+      width: 110px;
+      height: 36px;
+      top: 48px;
+      left: 90px;
+      animation: cf 8s ease-in-out infinite;
+    }
+
+    .c1::before {
+      width: 46px;
+      height: 46px;
+      top: -24px;
+      left: 18px;
+    }
+
+    .c1::after {
+      width: 36px;
+      height: 36px;
+      top: -18px;
+      left: 54px;
+    }
+
+    .c2 {
+      width: 80px;
+      height: 28px;
+      top: 78px;
+      right: 170px;
+      animation: cf 10s ease-in-out infinite reverse;
+    }
+
+    .c2::before {
+      width: 34px;
+      height: 34px;
+      top: -18px;
+      left: 12px;
+    }
+
+    .c2::after {
+      width: 26px;
+      height: 26px;
+      top: -14px;
+      left: 40px;
+    }
+
+    @keyframes cf {
+
+      0%,
+      100% {
+        transform: translateX(0)
+      }
+
+      50% {
+        transform: translateX(14px)
+      }
+    }
+
+    .home-hill1 {
+      position: absolute;
+      bottom: 36px;
+      left: -50px;
+      width: 260px;
+      height: 110px;
+      background: #5baa36;
+      border-radius: 50% 50% 0 0;
+      z-index: 1;
+    }
+
+    .home-hill2 {
+      position: absolute;
+      bottom: 36px;
+      left: 140px;
+      width: 190px;
+      height: 86px;
+      background: #6dbe45;
+      border-radius: 50% 50% 0 0;
+      z-index: 1;
+    }
+
+    /* 프로필 */
+    .home-profile {
+      position: absolute;
+      top: 3vw;
+      left: 3vw;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      z-index: 10;
+    }
+
+    .profile-avatar {
+      /* width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 3px solid white;
+      background: linear-gradient(135deg, #ffd6e7, #c3e6ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+      border: 1px solid red; */
+    }
+
+    .profile-avatar img {
+      width: 7vw;
+      height: 7vw;
+      border: 0.6vw solid #458FFF;
+      border-radius: 100%;
+    }
+
+    .profile-text {
+      /* background: rgba(255, 255, 255, 0.92); */
+      border-radius: 15px;
+      padding: 2px 4px;
+      /* width: 15vw; */
+      font-family: 'YeogiOttaeJalnan';
+      /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); */
+    }
+
+    .profile-text p {
+  font-size: 3vw;
+  font-weight: 900;
+  line-height: 1.2;
+  
+  color: #458FFF;
+
+  /* -webkit-text-stroke: 0.2vw #cbb3eb; */
+}
+
+    /* 카드 3개 */
+    .home-cards {
+      position: absolute;
+      top: 16vw;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 5vw;
+      padding: 0 80px;
+      z-index: 10;
+    }
+
+    .home-card {
+      cursor: pointer;
+      transition: transform 0.2s, filter 0.2s;
+      /* filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3)); */
+
+      
+    }
+
+    .home-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      /* filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.4)); */
+    }
+
+    .home-card:active {
+      transform: scale(0.96);
+    }
+
+    .home-card img {
+      height: 31vw;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    /* 우하단 곰돌이 */
+    .home-bear {
+      position: absolute;
+      bottom: 1.3vw;
+      right: 4vw;
+      z-index: 10;
+      /* animation: bearBounce 2.5s ease-in-out infinite; */
+    }
+
+    .home-bear img {
+      height: 22vw;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    @keyframes bearBounce {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(-2deg)
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(2deg)
+      }
+    }
+
+    .home-gear {
+      position: absolute;
+      bottom: 22px;
+      left: 26px;
+      width: 42px;
+      height: 42px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+      transition: transform 0.3s;
+    }
+
+    .home-gear:hover {
+      transform: rotate(90deg);
+    }
+
+    #galleryToast {
+      display: none;
+      position: absolute;
+      bottom: 68px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 11px 22px;
+      border-radius: 16px;
+      font-size: 14px;
+      font-weight: 700;
+      z-index: 50;
+      white-space: nowrap;
+    }
+
+    /* ══════════════════════════════
+       02. 퍼즐 갤러리
+    ══════════════════════════════ */
+    #screen-puzzle {
+      /* background: radial-gradient(ellipse at center, #1e1e4f 0%, #0a0a1e 100%); */
+      flex-direction: column;
+      background-image: url('images/puzzle-bg.png');
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+
+    .puzzle-header {
+      /* width: 100%; */
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      /* padding: 13px 22px; */
+      z-index: 10;
+      /* background:#8F40F7; */
+      /* backdrop-filter: blur(10px); */
+      border-radius: 4vw;
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 1vw 2vw;
+      margin-left: 2vw;
+      color: white;
+      font-size: 1vw;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'YeogiOttaeJalnan';
+      transition: background 0.2s;
+      position: relative;
+      top: 0.5vw;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .puzzle-title {
+      color: white;
+      font-size: 1.5vw;
+      font-weight: 800;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      font-family: 'YeogiOttaeJalnan';
+      position: relative;
+      top: 0.6vw;
+    }
+
+    .puzzle-progress {
+      /* background: rgba(255, 255, 255, 0.15); */
+      border-radius: 20px;
+      /* padding: 6px 14px; */
+      margin-right: 2vw;
+      color: white;
+      font-size: 1.2vw;
+      font-weight: 700;
+      font-family: 'YeogiOttaeJalnan';
+    }
+
+    .puzzle-grid-wrapper {
+      position: absolute;
+      top: 56px;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .puzzle-cell {
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+      /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); */
+      /* background: #2a2a4a; */
+    }
+
+    /* .puzzle-cell:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
+    } */
+
+    /* .puzzle-cell:active {
+      transform: scale(0.96);
+    } */
+
+    
+
+    .puzzle-cell-2 {
+      /* border-radius: 14px; */
+      position: relative;
+      left: 50vw;
+      top: 15vw;
+    }
+
+    .puzzle-cell-2 .art-cell-inner {
+      /* background-image: url('images/art-1.png'); */
+    }
+
+    
+
+    /* 퍼즐 조각: JS가 셀 실제 크기를 읽어 background-size/position 동적 적용 */
+    .bear-piece {
+      width: 100%;
+      height: 100%;
+      background-image: url('images/puzzle-bear.png');
+      background-repeat: no-repeat;
+      /* background-size, background-position 은 JS initPuzzle()이 설정 */
+    }
+
+    /* 미완료 명화 셀 */
+    .art-cell-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      border-radius: 14px;
+    }
+
+    .art-cell-inner .art-emoji {
+      font-size: 34px;
+    }
+
+    .art-cell-inner .art-name {
+      font-size: 11px;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.85);
+      text-align: center;
+      padding: 0 4px;
+    }
+
+    .puzzle-badge {
+      position: absolute;
+      top: 7px;
+      left: 7px;
+      border-radius: 8px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 800;
+      color: white;
+      font-family: "Nanum Round Square", sans-serif;
+      z-index: 3;
+    }
+
+    .badge-incomplete {
+      background: #F5A623;
+    }
+
+    .badge-inprogress {
+      background: #8B5CF6;
+    }
+
+    /* 퍼즐 우하단 곰돌이 */
+    .puzzle-bear-corner {
+      position: absolute;
+      bottom: 10px;
+      right: 14px;
+      height: 190px;
+      z-index: 19;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+      /* animation: bearBounce 2s ease-in-out infinite; */
+    }
+
+    .puzzle-speech {
+      position: absolute;
+      bottom: 104px;
+      right: 12vw;
+      background: #4B9FE1;
+      color: white;
+      border-radius: 20px 20px 4px 20px;
+      padding: 12px 17px;
+      font-size: 14px;
+      font-weight: 800;
+      max-width: 190px;
+      z-index: 20;
+      line-height: 1.5;
+      box-shadow: 0 4px 20px rgba(75, 159, 225, 0.4);
+    }
+
+
+    .puzzle-bear{
+      /* border: 1px solid red; */
+      position: absolute;
+      bottom: -1vw;
+      right: 0;
+      z-index: 10;
+    }
+
+    .puzzle-bear img:nth-child(1){
+      height: 7vw;
+      position: relative;
+      bottom: 5.6vw;
+      right: 2vw;
+
+      transition: opacity 0.8s ease, transform 0.8s ease; 
+    }
+
+    .puzzle-bear img:nth-child(2){
+      width: 14vw;
+    }
+
+
+    .puzzle-bear img:nth-child(1){
+    height: 7vw;
+    position: relative;
+    bottom: 5.6vw;
+    right: 2vw;
+
+    /* ★ 자바스크립트 없이 CSS 자체로 무한 둥둥 뜨게 만들기 */
+    animation: floatEffect 1.2s ease-in-out infinite alternate;
+}
+
+/* 위아래로 부드럽게 왔다 갔다 하는 기준 */
+@keyframes floatEffect {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-0.6vw); /* 위로 0.6vw만큼 살짝 들림 */
+    }
+}
+
+
+
+/* ==========================================================================
+   🖼️ 02-1. 갤러리 화면 전용 스타일 (독립 분리)
+   ========================================================================== */
+
+/* 1. 평소 갤러리 상태 (display: flex를 지우거나 아래처럼 수정) */
+#screen-gallery {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  background-image: url('images/star.png');
+  /* background-size: 100% 100%; 
+  background-position: center center;
+  background-repeat: no-repeat; */
+  
+  /* ❌ 기존에 여기 있던 display: flex; 랑 flex-direction 등은 지우거나 주석 처리! */
+  position: relative;
+  overflow: hidden; 
+}
+
+/* 2. 💡 갤러리 화면이 활성화(active) 되었을 때만 정렬이 작동하도록 추가 */
+#screen-gallery.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+}
+
+
+#screen-gallery .gallery-content{
+  /* border: 1.3vw solid #FF780A; */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* bottom: 20vw; */
+  background-image: url('images/gallery.png');
+  /* border-radius: 5vw; */
+  background-size: 100% 100%; 
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+#screen-gallery .warning{
+  width: 34vw;
+  z-index: 10;
+  position: absolute;
+  bottom: 0;
+  left: 34%;
+}
+
+
+/* 💡 갤러리 화면의 헤더만 콕 집어서 위치 초기화 (다른 화면 헤더 방해 금지) */
+#screen-gallery .puzzle-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5vw;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 💡 가로 스크롤을 담당하는 컨테이너 */
+.gallery-slider {
+  display: flex;
+  flex-direction: row;
+  width: 100%;  
+  max-width: none;
+  padding: 40px 40px; 
+  margin-top: -40px;
+  margin-bottom: -40px;
+
+  /* 가로 스크롤 핵심 설정 */
+  overflow-x: auto;
+  overflow-y: hidden; /* 공간을 미리 벌려놨기 때문에 hidden 상태여도 안 잘려! */
+  /* position: relative;
+  bottom: 3vw;  */
+  position: absolute;
+  top: 9vw;
+  
+  /* 스크롤바 숨기기 */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch; 
+}
+
+/* 크롬, 사파리, 오페라에서 스크롤바 숨기기 */
+.gallery-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* 💡 개별 그림 스타일 */
+.gallery-item {
+  flex: 0 0 auto; /* 크기가 줄어들지 않도록 고정 */
+  height: 45vh;   /* 💡 화면 높이 비율(vh)에 맞추면 훨씬 반응형으로 예쁨 */
+  width: auto;    /* 가로 길이는 원본 비율 유지 (찌그러짐 방지!) */
+  margin-right: 30px; /* 그림과 그림 사이 간격 */
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  /* border: 1px solid red; */
+}
+
+.gallery-item:hover {
+  transform: scale(1.08);
+}
+
+
+#screen-gallery .puzzle-header {
+  background: rgba(255, 255, 255, 0); 
+  
+  backdrop-filter: blur(0px); 
+}
+
+/* 💡 (선택사항) 헤더 배경색이 밝아져서 글씨나 버튼이 안 보인다면 색상도 변경 가능 */
+#screen-gallery .puzzle-header .puzzle-title,
+#screen-gallery .puzzle-header .puzzle-progress {
+  color: #ffffff; /* 글씨 색상 변경 원하면 여기서 조절! */
+}
+
+#screen-gallery .puzzle-header .back-btn {
+  /* color: #1a1a2e;
+  width: 9vw;
+  height: 5vw;
+  background-color: #8F40F7;
+  border-radius: 9vw;
+  font-size: 1.3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1.3vw;
+  color: #fff;
+  position: absolute;
+  top: 1vw;
+  left: -0.4vw;
+  border: none;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;  */
+
+  background: rgba(59, 59, 59, 0.611);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 1vw 2vw;
+      margin-left: 2vw;
+      color: rgb(255, 255, 255);
+      font-size: 1vw;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'YeogiOttaeJalnan';
+      transition: background 0.2s;
+      transition: transform 0.2s ease-in-out;
+      cursor: pointer; 
+      position: relative;
+      top: 0.5vw;
+}
+
+
+
+
+#screen-gallery .puzzle-header .back-btn:hover {
+  transform: scale(1.1);
+}
+
+#screen-gallery .gallery-bear{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+#screen-gallery .gallery-bear img:nth-child(1){
+  width: 25vw;
+  position: relative;
+  bottom: 3vw;
+  left: 1vw;
+}
+
+#screen-gallery .gallery-bear img:nth-child(2){
+  width: 17vw;
+}
+
+
+.gallery-popup {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.5);
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+.gallery-popup.active {
+  display: flex;
+}
+
+.popup-content {
+  width: 60vw;
+  height: 47vw;
+  /* padding: 30px; */
+
+  /* background: white; */
+  border-radius: 20px;
+  /* border: 2px solid red; */
+
+  position: relative;
+  text-align: center;
+  background-image: url('images/pop-up.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+}
+
+.popup-content .pop-up-left{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* border: 1px solid red; */
+  position: relative;
+  left: 4vw;
+  top: 7vw;
+}
+
+.popup-content .pop-up-left img {
+  width:27vw;
+  margin: 20px 0;
+}
+
+.popup-content .pop-up-left h2{
+  text-align: left;
+  font-family: 'YeogiOttaeJalnan';
+  font-size: 1.8vw;
+  color: #FFB521;
+}
+
+.popup-content .mattise{
+  height: 32vw;
+  position: relative;
+  top: 10vw;
+  /* right: 2vw; */
+  left: 1.5vw;
+}
+
+.popup-close {
+  position: absolute;
+  top: -0.4vw;
+  right: 1.3vw;
+
+  border: none;
+  background: none;
+
+  font-size: 3.5vw;
+  cursor: pointer;
+  color: #FDF5E1;
+}
+
+
+
+
+    /* ══════════════════════════════
+       03. 명화 소개
+    ══════════════════════════════ */
+    #screen-artwork {
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    #screen-artwork p{
+      color: #fff;
+      z-index: 10;
+      font-size: 1.2vw;
+    }
+    .artwork-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(0.65);
+    }
+
+    .artwork-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .artwork-panel {
+      position: relative;
+      z-index: 10;
+      /* background: #fff8e1; */
+      border-radius: 3vw;
+      width: 38vw;
+      height: 27vw;
+      padding: 3vw 5vw;
+      text-align: center;
+      /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55); */
+      /* border: 1vw solid #F5A623; */
+      background-image: url('images/board.png');
+      background-size:100%;
+      background-repeat: no-repeat;
+      /* border: 1px solid red; */
+    }
+
+    .artwork-badge {
+      background: #F5A623;
+      color: white;
+      display: inline-block;
+      border-radius: 12px;
+      padding: 0.7vw 1.5vw;
+      font-size: 1.3vw;
+      font-weight: 800;
+      margin-bottom: 14px;
+      font-family: 'YeogiOttaeJalnan';
+    }
+
+    .artwork-title {
+      font-size: 4vw;
+      font-weight: 900;
+      color: #2d3748;
+      margin-bottom: 28px;
+      font-family: 'YeogiOttaeJalnan';
+      position: absolute;
+      top: 10vw;
+      left: 23%;
+
+    }
+
+    .artwork-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      position: absolute;
+      top: 18.5vw;
+      left: 3vw;
+    }
+
+    .btn-back-art {
+      background: #458FFF;
+      color: white;
+      border: none;
+      border-radius: 1.5vw;
+      font-size: 1.4vw;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: 'YeogiOttaeJalnan';
+      transition: transform 0.15s;
+      box-shadow: 0 6px 24px #521a9c9f;
+      margin-right: 1vw;
+      width: 14vw;
+      height: 5.6vw;
+      position: relative;
+      left: 1vw;
+      bottom: 0.6vw;
+      border: 0.4vw solid #7eb0fc;
+
+      box-shadow: 
+        inset 0 2px 4px rgba(255, 255, 255, 0.3),  /* 위쪽 흰색 하이라이트 */
+        inset 0 -3px 6px rgba(0, 0, 0, 0.2);       /* 아래쪽 어두운 음영 */
+    }
+
+    .btn-back-art:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-draw {
+      background: #8F40F7;
+      color: white;
+      border: none;
+      border-radius: 1.5vw;
+      font-size: 1.4vw;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: 'YeogiOttaeJalnan';
+      transition: transform 0.15s;
+      box-shadow: 0 6px 24px #521a9c9f;
+      margin-right: 1vw;
+      width: 14vw;
+      height: 5.6vw;
+      position: relative;
+      left: 1vw;
+      bottom: 0.6vw;
+      border: 0.4vw solid #c395fe;
+
+      box-shadow: 
+        inset 0 2px 4px rgba(255, 255, 255, 0.3),  /* 위쪽 흰색 하이라이트 */
+        inset 0 -3px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-draw:hover {
+      transform: translateY(-3px);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    #screen-artwork-home {
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    #screen-artwork-home p{
+      color: #fff;
+      z-index: 10;
+      font-size: 1.2vw;
+    }
+    #screen-artwork-home .artwork-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(0.65);
+    }
+
+    #screen-artwork-home .artwork-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    #screen-artwork-home .artwork-panel {
+      position: relative;
+      z-index: 10;
+      /* background: #fff8e1; */
+      border-radius: 3vw;
+      width: 38vw;
+      height: 27vw;
+      padding: 3vw 5vw;
+      text-align: center;
+      /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55); */
+      /* border: 1vw solid #F5A623; */
+      background-image: url('images/board.png');
+      background-size:100%;
+      background-repeat: no-repeat;
+      /* border: 1px solid red; */
+    }
+
+    #screen-artwork-home .artwork-badge {
+      background: #F5A623;
+      color: white;
+      display: inline-block;
+      border-radius: 12px;
+      padding: 0.7vw 1.5vw;
+      font-size: 1.3vw;
+      font-weight: 800;
+      margin-bottom: 14px;
+      font-family: 'YeogiOttaeJalnan';
+    }
+
+    #screen-artwork-home .artwork-title {
+      font-size: 4vw;
+      font-weight: 900;
+      color: #222325;
+      margin-bottom: 28px;
+      font-family: 'YeogiOttaeJalnan';
+    }
+
+    #screen-artwork-home .artwork-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    #screen-artwork-home .btn-back-art {
+      background: #8F40F7;
+      color: white;
+      border: none;
+      border-radius: 1.5vw;
+      font-size: 1.4vw;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: 'YeogiOttaeJalnan';
+      transition: transform 0.15s;
+      box-shadow: 0 6px 24px #521a9c9f;
+      margin-right: 1vw;
+      width: 18vw;
+      height: 5.6vw;
+      position: relative;
+      left: 7vw;
+      bottom: 0.6vw;
+      border: 0.4vw solid #c395fe;
+
+      box-shadow: 
+        inset 0 2px 4px rgba(255, 255, 255, 0.3),  /* 위쪽 흰색 하이라이트 */
+        inset 0 -3px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    #screen-artwork-home .btn-back-art:hover {
+      transform: translateY(-3px);
+
+      box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.2),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    #screen-artwork-home .btn-draw {
+      background: #F5A623;
+      color: white;
+      border: none;
+      border-radius: 1vw;
+      /* padding: 1.5vw 3vw; */
+      font-size: 1.3vw;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: 'YeogiOttaeJalnan';
+      transition: transform 0.15s;
+      box-shadow: 0 4px 14px rgba(245, 166, 35, 0.4);
+      width: 15vw;
+      height: 5vw;
+    }
+
+    #screen-artwork-home .btn-draw:hover {
+      transform: translateY(-3px);
+    }
+
+
+
+
+
+
+
+
+
+
+
+    #screen-drawing-lyrics{
+      background-color: #0a0015;
+    }
+
+
+    /* ── 가사 화면 기본 상태 (평소엔 숨김) ── */
+#screen-drawing-lyrics {
+  display: none; /* 🌟 다른 화면일 때는 절대 안 보이게 숨김! */
+  background-color: #222; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4vw;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/mone-water.png');
+  /* border: 1px solid red; */
+}
+
+/* ── 🌟 자바스크립트가 이 화면을 켰을 때만 작동하는 스타일 ── */
+#screen-drawing-lyrics.active {
+  display: flex; /* active 클래스가 붙을 때만 뿅 나타남 */
+}
+
+
+/* #screen-drawing-lyrics .puzzle-header .back-btn {
+  color: #1a1a2e;
+  width: 9vw;
+  height: 5vw;
+  background-color: #8F40F7;
+  border-radius: 9vw;
+  font-size: 1.3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1.3vw;
+  color: #fff;
+  position: absolute;
+  top: 1vw;
+  left: -0.4vw;
+  border: none;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer; 
+} */
+
+
+/* 가사 컨테이너 */
+.lyrics-container {
+  width: 100%;
+  max-height: 70vh;
+  overflow-y: auto; 
+  text-align: left;
+  padding: 3vw;
+  /* border: 1px solid red; */
+  z-index: 10;
+}
+
+/* 기본 가사 스타일 */
+.lyric-line {
+  font-family: 'YeogiOttaeJalnan';
+  font-size: 1.3vw;
+  font-weight: 600;
+  line-height: 1.9;
+  letter-spacing: 5%;
+  color: #a6a6a6df;
+  margin-bottom: 2.5vw;
+  transition: color 0.5s ease, transform 0.5s ease;
+}
+
+/* 현재 읽고 있는 가사 스타일 */
+.lyric-line.active {
+  /* color: #3182ce;  */
+  color: #fff;
+  transform: scale(1.05); 
+  text-shadow: 0 0 10px rgba(49, 130, 206, 0.3);
+}
+
+/* 하단 다음 버튼 */
+.lyrics-next-btn {
+  margin-top: 2vw;
+  padding: 1vw 3vw;
+  font-size: 1.8vw;
+  font-family: 'YeogiOttaeJalnan';
+  background-color: #ffdd57;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+
+    /* ══════════════════════════════
+       04. 큐레이션 스토리
+    ══════════════════════════════ */
+    #screen-story {
+      position: relative;
+      background: #0a0a1a;
+    }
+
+    .story-painting-bg {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 58%;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .story-painting-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story-fade-left {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 120px;
+      background: linear-gradient(to right, #0a0a1a, transparent);
+      z-index: 2;
+    }
+
+    .story-char-area {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 42%;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 14px;
+      border: 1px solid red;
+    }
+
+    .story-char-img {
+      height: 38vw;
+      width: auto;
+      object-fit: contain;
+      /* filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.6)); */
+      animation: charFloat 3s ease-in-out infinite;
+      position: relative;
+      top: 8vw;
+    }
+
+    @keyframes charFloat {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-10px)
+      }
+    }
+
+    .story-speech {
+      position: absolute;
+      top: 2vw;
+      left: 5.4vw;
+      right: 57%;
+      z-index: 20;
+      background: #458FFF;
+      border-radius: 2vw;
+      padding: 2vw 2vw;
+      width: 33vw;
+      height: 16vw;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      border: 3px solid #4B9FE1;
+      animation: slideDown 0.4s ease;
+      font-family: 'YeogiOttaeJalnan';
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-16px);
+        opacity: 0
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1
+      }
+    }
+
+    .story-speech p {
+      font-size: 1.5vw;
+      font-weight: 700;
+      color: white;
+      line-height: 1.65;
+    }
+
+    .story-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1vw;
+      /* margin-top: 11px; */
+      position: absolute;
+      bottom: 1.3vw;
+      right: 1.3vw;
+    }
+
+    .nav-arrow {
+      width: 3vw;
+      height: 3vw;
+      border-radius: 50%;
+      background: white;
+      border: none;
+      cursor: pointer;
+      font-size: 2vw;
+      color: #458FFF;
+      font-weight: 900;
+      transition: transform 0.15s;
+      box-shadow: 0 3px 10px rgba(75, 159, 225, 0.4);
+    }
+
+    .nav-arrow:hover {
+      transform: scale(1.12);
+    }
+
+    .nav-arrow:disabled {
+      background: #ccc;
+      cursor: default;
+      opacity: 0.5;
+    }
+
+    .story-page-num {
+      font-size: 2vw;
+      font-weight: 800;
+      color: white;
+    }
+
+    .audio-indicator {
+      position: absolute;
+      top: 1.5vw;
+      right: 1.5vw;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background:#458FFF;
+      border-radius: 1vw;
+      padding: 1vw 2vw;
+      font-family: 'YeogiOttaeJalnan';
+    }
+
+    .audio-bar {
+      width: 3px;
+      background: white;
+      border-radius: 2px;
+      animation: audioBar 0.8s ease-in-out infinite;
+    }
+
+    .audio-bar:nth-child(1) {
+      height: 8px;
+      animation-delay: 0s
+    }
+
+    .audio-bar:nth-child(2) {
+      height: 14px;
+      animation-delay: 0.15s
+    }
+
+    .audio-bar:nth-child(3) {
+      height: 10px;
+      animation-delay: 0.3s
+    }
+
+    .audio-bar:nth-child(4) {
+      height: 6px;
+      animation-delay: 0.45s
+    }
+
+    @keyframes audioBar {
+
+      0%,
+      100% {
+        transform: scaleY(0.5)
+      }
+
+      50% {
+        transform: scaleY(1)
+      }
+    }
+
+    .fact-box {
+      position: absolute;
+      bottom: 16vw;
+      right: 4%;
+      left: 50vw;
+      width: 42vw;
+      z-index: 20;
+      border-radius: 2vw;
+      overflow: hidden;
+      display: none;
+      /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); */
+    }
+
+    .fact-box.visible {
+      display: block;
+      animation: slideUp 0.4s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(16px);
+        opacity: 0
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1
+      }
+    }
+
+    .fact-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .story-dots {
+      position: relative;
+      top:20vw;
+      left: 19vw;
+      display: flex;
+      gap: 8px;
+      z-index: 20;
+    }
+
+    .story-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .story-dot.active {
+      background: #4B9FE1;
+      transform: scale(1.3);
+    }
+
+    .story-start-btn {
+      position: absolute;
+      bottom: 4vw;
+      left: 60vw;
+      z-index: 25;
+      background: #F5A623;
+      color: white;
+      border: none;
+      border-radius: 1.4vw;
+      padding: 1.3vw 3.5vw;
+      font-size: 2vw;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: 'YeogiOttaeJalnan';
+      box-shadow: 0 6px 24px rgba(245, 166, 35, 0.6);
+      display: none;
+      animation: btnPulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes btnPulse {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.05)
+      }
+    }
+
+    .story-start-btn:hover {
+      transform: scale(1.08) !important;
+      animation: none;
+    }
+
+    .auto-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1.5vw;
+      background: rgba(255, 255, 255, 0.12);
+      z-index: 25;
+    }
+
+    .auto-progress-fill {
+      height: 100%;
+      background: #458FFF;
+      border-radius: 2px;
+      transition: width 0.1s linear;
+    }
+
+    /* ══════════════════════════════
+       05. 그리기 화면
+    ══════════════════════════════ */
+    #screen-drawing {
+      background: #f0f4f8;
+      flex-direction: column;
+    }
+
+    .drawing-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 5vw;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 17px;
+      background: rgb(0, 0, 0);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      z-index: 20;
+      
+    }
+
+    .drawing-title {
+      font-size: 1.5vw;
+      font-weight: 800;
+      color: white;
+      position: absolute;
+      left: 37%;
+    }
+
+    .drawing-timer {
+      background: #4B9FE1;
+      color: white;
+      border-radius: 12px;
+      padding: 5px 12px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .drawing-content {
+      position: absolute;
+      top: 50px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+    }
+
+    .drawing-reference {
+      width: 42%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      background: #1a1a2e;
+      border-right: 4px solid #4B9FE1;
+    }
+
+    .drawing-ref-label {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .ref-painting {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .ref-painting img {
+      width: 100%;
+      height: auto;
+      max-height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ref-caption {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 11px;
+      font-weight: 700;
+      margin-top: 10px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .drawing-workbook {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 13px;
+      background: #f7fafc;
+    }
+
+    .workbook-label {
+      color: #718096;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .workbook-canvas {
+      width: 100%;
+      flex: 1;
+      max-height: 320px;
+      border-radius: 12px;
+      border: 3px dashed #CBD5E0;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      cursor: crosshair;
+    }
+
+    #drawCanvas {
+      position: absolute;
+      inset: 0;
+      cursor: crosshair;
+      border-radius: 9px;
+    }
+
+    .canvas-hint {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .canvas-hint-text {
+      font-size: 13px;
+      color: #a0aec0;
+      font-weight: 700;
+      font-family: "Nanum Round Square", sans-serif;
+    }
+
+    .workbook-tools {
+      display: flex;
+      gap: 7px;
+      margin-top: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .color-dot {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: transform 0.15s, border-color 0.15s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .color-dot:hover,
+    .color-dot.selected {
+      transform: scale(1.2);
+      border-color: #2d3748;
+    }
+
+    .tool-btn {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      color: #4a5568;
+      font-family: "Nanum Round Square", sans-serif;
+      transition: background 0.15s;
+    }
+
+    .tool-btn:hover {
+      background: #e2e8f0;
+    }
+
+    .done-btn {
+      position: absolute;
+      bottom: 4vw;
+      right: 5vw;
+      z-index: 20;
+      background: #22c55e;
+      color: white;
+      border: none;
+      border-radius: 2vw;
+      padding: 1.5vw 2vw;
+      font-size:1.4vw;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(34, 197, 94, 0.5);
+      animation: donePulse 2s ease-in-out infinite;
+      font-family: 'YeogiOttaeJalnan';
+    }
+
+    @keyframes donePulse {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.04)
+      }
+    }
+
+    .done-btn:hover {
+      transform: scale(1.07) !important;
+      animation: none;
+    }
+
+    /* ══════════════════════════════
+       06. 결과 화면
+    ══════════════════════════════ */
+    #screen-result {
+      background: radial-gradient(ellipse at center, #1a0533 0%, #0a0015 100%);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #particleCanvas {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .sparkle-container {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .sparkle {
+      position: absolute;
+      animation: sparkleFly 3s ease-out infinite;
+      opacity: 0;
+    }
+
+    @keyframes sparkleFly {
+      0% {
+        opacity: 0;
+        transform: translateY(100px) scale(0)
+      }
+
+      30% {
+        opacity: 1
+      }
+
+      70% {
+        opacity: 0.8
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-200px) scale(1.5)
+      }
+    }
+
+    .result-panel {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 18px;
+    }
+
+    .result-title {
+      color: #FFD700;
+      font-size: 26px;
+      font-weight: 900;
+      font-family: "Gaegu", sans-serif;
+      animation: titleGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes titleGlow {
+
+      0%,
+      100% {
+        text-shadow: 0 0 20px #FFD70088
+      }
+
+      50% {
+        text-shadow: 0 0 40px #FFD700, 0 0 60px #FFA500
+      }
+    }
+
+    .result-compare {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .compare-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .compare-img {
+      width: 210px;
+      height: 155px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+    }
+
+    .compare-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .compare-label {
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .vs-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #FFD700;
+      color: #1a0533;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 900;
+      box-shadow: 0 4px 16px rgba(255, 215, 0, 0.5);
+    }
+
+    .result-praise {
+      background: rgba(255, 255, 255, 0.12);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 18px;
+      padding: 14px 26px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      max-width: 480px;
+    }
+
+    .praise-text {
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.65;
+    }
+
+    .result-actions {
+      display: flex;
+      gap: 14px;
+    }
+
+    .action-btn {
+      border: none;
+      border-radius:1.2vw;
+      padding: 1vw 2vw;
+      font-size: 1.5vw;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: 'YeogiOttaeJalnan';
+      transition: transform 0.15s;
+      margin-top: 2vw;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-gallery {
+      background: #8B5CF6;
+      color: white;
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
+    }
+
+    .btn-share {
+      background: #F97316;
+      color: white;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.4);
+    }
+
+    .btn-next {
+      background: #22c55e;
+      color: white;
+      box-shadow: 0 4px 14px rgba(34, 197, 94, 0.4);
+    }
+
+    .sticker-pop {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 30;
+      background: #FFD700;
+      border-radius: 14px;
+      padding: 9px 15px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 16px rgba(255, 215, 0, 0.6);
+      animation: stickerPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes stickerPop {
+      from {
+        transform: scale(0) rotate(-10deg);
+        opacity: 0
+      }
+
+      to {
+        transform: scale(1) rotate(0);
+        opacity: 1
+      }
+    }
+
+    .sticker-pop span {
+      font-size: 20px;
+    }
+
+    .sticker-pop p {
+      font-size: 12px;
+      font-weight: 800;
+      color: #5a3d0a;
+    }
+
+    /* 화면 전환 */
+    .screen-transition {
+      position: fixed;
+      inset: 0;
+      background: white;
+      z-index: 1000;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .screen-transition.flash {
+      opacity: 1;
+    }
+
+    /* ══════════════════════════════
+       05. 그리기 화면 (신규 — 수련 전체감상)
+    ══════════════════════════════ */
+    .drawing-music-badge {
+      background: rgba(75, 159, 225, 0.9);
+      color: white;
+      border-radius: 20px;
+      padding: 1vw 2vw;
+      font-size: 1.5vw;
+      font-weight: 700;
+    }
+
+    /* 수련 이미지 — 헤더 아래 전체 채움 */
+    .drawing-fullimg {
+      position: absolute;
+      top: 50px;
+      /* 헤더 높이만큼 내려옴 */
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: calc(100% - 50px);
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    /* 하단 안내 문구 바 */
+    .drawing-guide {
+      position: absolute;
+      bottom: 4vw;
+      /* 다 그렸어요 버튼 위 */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(6px);
+      border-radius: 30px;
+      padding: 1.5vw 2vw;
+      white-space: nowrap;
+    }
+
+    .drawing-guide-icon {
+      font-size: 20px;
+    }
+
+    .drawing-guide-text {
+      color: white;
+      font-size: 1.4vw;
+      font-weight: 700;
+      
+    }
+
+    /* ══════════════════════════════
+       06. 결과 화면 (신규 — 칭찬 화면)
+    ══════════════════════════════ */
+
+    /* 배경: 수련 이미지 어둡게 깔기 */
+    .praise-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(0.35) blur(2px);
+    }
+
+    /* 전체 레이아웃: 좌(캐릭터) + 우(말풍선+버튼) */
+    .praise-screen {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+
+    /* 왼쪽 캐릭터 영역 */
+    .praise-char-area {
+      width: 44%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 0;
+    }
+
+    .praise-char-img {
+      height: 90%;
+      /* 화면 높이의 90% — 원하면 px로 고정 가능 */
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.7));
+      animation: charFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes charFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* 오른쪽 콘텐츠 영역 */
+    .praise-content {
+      width: 56%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 32px 40px 32px 16px;
+      gap: 20px;
+    }
+
+    /* 말풍선 */
+    .praise-bubble {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 3vw;
+      /* 왼쪽 하단 뾰족 */
+      padding: 4vw 6vw;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      /* border: 3px solid #4B9FE1; */
+      position: relative;
+    }
+
+    /* 말풍선 꼬리 */
+    /* .praise-bubble::before {
+      content: "";
+      position: absolute;
+      left: -16px;
+      bottom: 20px;
+      border-width: 10px 16px 10px 0;
+      border-style: solid;
+      border-color: transparent #4B9FE1 transparent transparent;
+    } */
+
+    /* .praise-bubble::after {
+      content: "";
+      position: absolute;
+      left: -11px;
+      bottom: 23px;
+      border-width: 7px 13px 7px 0;
+      border-style: solid;
+      border-color: transparent rgba(255, 255, 255, 0.96) transparent transparent;
+    } */
+
+    .praise-bubble-title {
+      font-size: 3vw;
+      font-weight: 900;
+      color: #F5A623;
+      font-family: 'YeogiOttaeJalnan';
+      margin-bottom: 2vw;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .praise-bubble-body {
+      font-size: 2vw;
+      text-align: center;
+      font-weight: 700;
+      color: #2d3748;
+      line-height: 1.6;
+      /* font-family: "Nanum Round Square", sans-serif; */
+      font-family: 'YeogiOttaeJalnan';
+    }
+
+    /* 스티커 획득 뱃지 */
+    .praise-sticker {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFD700;
+      border-radius: 30px;
+      padding: 1.3vw 2vw;
+      box-shadow: 0 4px 16px rgba(255, 215, 0, 0.5);
+      animation: stickerPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+
+    .praise-sticker span:first-child {
+      font-size: 22px;
+    }
+
+    .praise-sticker-text {
+      font-size: 1.5vw;
+      font-weight: 800;
+      color: #5a3d0a;
+      font-family: 'YeogiOttaeJalnan';
+    }
+
+    /* 버튼 행 */
+    .praise-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .puzzle-grid-wrapper {
+      /* border: 3px solid red; */
+      position: absolute;
+      top: 5.5vw;
+      right: 26vw;
+      width: 76%;
+      height: 86%;
+      margin: 0 auto;
+      background-image: url('images/puzzle.png');
+      background-size: 70%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .puzzle-grid-wrapper .puzzle-section li{
+        width: 13.23vw;
+        height: 13.26vw;
+        /* background-color: red; */
+        border-radius: 1vw;
+        position: absolute;
+        left: 11.96vw;
+        top: 1.5vw;
+    }

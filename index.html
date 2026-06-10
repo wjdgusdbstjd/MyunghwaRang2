@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>명화랑 - 아동 앱 프로토타입</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nanum+Round+Square:wght@400;700;800&family=Gaegu:wght@400;700&display=swap"
+    rel="stylesheet">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="index.css">
+
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <div class="app-wrapper">
+    <div class="tablet-frame">
+      <div class="tablet-screen">
+        <div class="screen-transition" id="transition"></div>
+
+        <!-- ════════════════════════════
+             01. 홈 화면
+        ════════════════════════════ -->
+        <div class="screen active" id="screen-home">
+
+          <!-- 프로필 -->
+          <div class="home-profile">
+            <div class="profile-avatar">
+              <img src="images/kid-icon.png" alt="">
+            </div>
+            <div class="profile-text">
+              <p>안녕, 하윤아!</p>
+              <p>오늘도 같이 그려볼까?</p>
+            </div>
+          </div>
+
+          <!-- 메뉴 카드 3개 — src 경로만 바꾸면 이미지 교체 -->
+          <div class="home-cards">
+
+            <div class="home-card" onclick="goToScreen('screen-artwork-home')">
+              <img src="images/home-art.png" alt="오늘의 명화">
+            </div>
+
+            <div class="home-card" onclick="goToScreen('screen-puzzle')">
+              <img src="images/home-drawing.png" alt="그림 그리기">
+            </div>
+
+            <div class="home-card" onclick="goToScreen('screen-gallery')">
+              <img src="images/home-gallery.png" alt="갤러리 보기">
+            </div>
+
+          </div>
+
+          <!-- 우하단 곰돌이 — src 경로만 바꾸면 교체 -->
+          <!-- <div class="home-bear">
+          <img src="images/홈화면곰돌이.png" alt="곰돌이">
+        </div> -->
+
+          <!-- <div class="home-gear">⚙️</div> -->
+          <div id="galleryToast">🎨 갤러리는 그림을 완성하면 열려요!</div>
+        </div>
+
+        <!-- ════════════════════════════
+             02. 퍼즐 갤러리
+        ════════════════════════════ -->
+        <div class="screen" id="screen-puzzle">
+
+          <div class="puzzle-header">
+            <button class="back-btn" onclick="goToScreen('screen-home')">홈으로</button>
+            <span class="puzzle-title">하윤이의 명화 퍼즐</span>
+            <span class="puzzle-progress">5 / 12 완성</span>
+          </div>
+
+          <div class="puzzle-grid-wrapper">
+
+            <!-- ── 완성된 곰돌이 퍼즐 조각 (bear-piece + bp-열-행 클래스로 위치 결정) ── -->
+            <div class="puzzle-cell-2" onclick="goToScreen('screen-artwork')" style="cursor:pointer;">
+              <div class="art-cell-inner">
+                <!-- <span style="font-size:26px;">🌿</span>
+                <span class="art-name" style="color:rgba(255,255,255,0.95);">모네의 수련</span> -->
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="puzzle-bear">
+            <img src="images/puzzle-bear-talk.png" alt="">
+            <img src="images/bear_2.png" alt="">
+          </div>
+        </div>
+
+
+
+        <div class="screen" id="screen-gallery">
+          <div class="puzzle-header">
+            <button class="back-btn" onclick="goToScreen('screen-home')">홈으로</button>
+          </div>
+
+          <div class="gallery-content">
+            <!-- <div class="puzzle-header">
+              <button class="back-btn" onclick="goToScreen('screen-home')">←</button>
+            </div> -->
+
+            <img class="warning" src="images/warning.png" alt="">
+
+            <div class="gallery-slider">
+              <img src="images/gallery-1.png" alt="아이 그림 1" class="gallery-item">
+              <img src="images/gallery-2.png" alt="아이 그림 2" class="gallery-item" onclick="openGalleryPopup()">
+              <img src="images/gallery-3.png" alt="아이 그림 3" class="gallery-item">
+              <img src="images/gallery-4.png" alt="아이 그림 4" class="gallery-item">
+              <img src="images/gallery-5.png" alt="아이 그림 5" class="gallery-item">
+              <img src="images/gallery-6.png" alt="아이 그림 6" class="gallery-item">
+            </div>
+          </div>
+
+          <div class="gallery-bear">
+            <img src="images/gallery-bear-talk.png" alt="">
+            <img src="images/gallery-bear.png" alt="">
+          </div>
+
+
+
+          <div class="gallery-popup" id="galleryPopup">
+            <div class="popup-content">
+
+              <button class="popup-close" onclick="closeGalleryPopup()">
+                ✕
+              </button>
+
+
+              <div class="pop-up-left">
+                <img src="images/pop-up-img.png" alt="">
+
+                <h2>
+                  하윤아, <br>
+                  빨간색을 정말 멋지게 사용했구나! <br>
+
+                  하윤이의 자신감이 보이는 멋진 작품이야!
+                </h2>
+              </div>
+
+              <img class="mattise" src="images/mattise.png" alt="">
+
+            </div>
+          </div>
+        </div>
+
+        <!-- ════════════════════════════
+             03. 명화 소개
+        ════════════════════════════ -->
+        <div class="screen" id="screen-artwork">
+          <img class="artwork-bg" src="images/monet-waterlilies.png" alt="수련 배경">
+          <div class="artwork-overlay"></div>
+
+          <div class="artwork-panel">
+            <!-- <div class="artwork-badge">오늘의 명화</div> -->
+            <div class="artwork-title">모네의 수련</div>
+            <div class="artwork-btns">
+              <button class="btn-back-art" onclick="goToScreen('screen-puzzle')">돌아가기</button>
+              <button class="btn-draw" onclick="goToScreen('screen-story')">수련 그리기</button>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="screen" id="screen-artwork-home">
+          <img class="artwork-bg" src="images/monet-waterlilies.png" alt="수련 배경">
+          <div class="artwork-overlay"></div>
+
+          <div class="artwork-panel">
+            <!-- <div class="artwork-badge">오늘의 명화</div> -->
+            <div class="artwork-title">모네의 수련</div>
+            <div class="artwork-btns">
+              <button class="btn-back-art" onclick="goToScreen('screen-drawing-lyrics') ">수련에 대해 알아보기</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="screen" id="screen-drawing-lyrics">
+          <div class="puzzle-header">
+            <button class="back-btn" onclick="goToScreen('screen-home')">홈으로</button>
+          </div>
+
+          <div class="lyrics-container">
+            <p class="lyric-line" id="lyric-0">안녕, 하윤아! 오늘 우리가 만나볼 그림은 알록달록 예쁜 <br>
+              꽃들이 물 위를 둥둥 떠다니는 비밀 정원이에요.</p>
+            <p class="lyric-line" id="lyric-1">이 그림을 그린 클로드 모네 할아버지는 꽃과 나무를 정말
+              사랑했어요. <br>
+              어느 날, 할아버지는 마당에 커다란 연못을 만들고 예쁜
+              연꽃들을
+              심었답니다.</p>
+            <p class="lyric-line" id="lyric-2">그런데 이 연꽃들은 조금 특별해요! 아침에 해가 쨍쨍 뜰 때, 점심에 구름이 지나갈 때, <br>
+              그리고 해가 질 때마다 연못의 색깔이
+              마법처럼 계속
+              바뀌었거든요.</p>
+            <p class="lyric-line" id="lyric-3">모네 할아버지는 그 비밀을 찾아내고 싶었어요. <br>
+              그래서 할아버지는 돋보기안경을 쓰고, 연못 앞에 의자를 가져다 놓은 뒤 매일매일
+              그림을 그렸답니다.
+            </p>
+            <p class="lyric-line" id="lyric-4">"어라? 지금은 연못이 초록색이네?"</p>
+            <p class="lyric-line" id="lyric-5">"와, 해가 지니까 이번엔 보라색이랑 분홍색으로 변했어!"</p>
+            <p class="lyric-line" id="lyric-6">모네 할아버지는 매일매일 변하는 연못의 색깔을 놓치지 않으려고 붓을 바쁘게 움직였대요.</p>
+            <p class="lyric-line" id="lyric-7">우리도 모네 할아버지처럼 멋진 비밀 정원의 색을 찾으러 출발해 볼까요?</p>
+          </div>
+
+          <button class="lyrics-next-btn" id="lyricsNextBtn" onclick="goToScreen('screen-story')" style="display:none;">
+            🎨 모네 아저씨 만나러 가기 ▶
+          </button>
+        </div>
+
+        <!-- ════════════════════════════
+             04. 큐레이션 스토리
+        ════════════════════════════ -->
+        <div class="screen" id="screen-story">
+
+          <!-- 오른쪽 명화 배경 — src 경로만 바꾸면 교체 -->
+          <div class="story-painting-bg">
+            <img src="images/monet-waterlilies.png" alt="수련">
+            <div class="story-fade-left"></div>
+          </div>
+
+          <!-- 왼쪽 캐릭터 — src 경로만 바꾸면 교체 -->
+          <div class="story-char-area">
+            <img class="story-char-img" id="storyCharImg" src="images/mone-1.png" alt="모네 캐릭터">
+          </div>
+
+          <!-- 음성 재생 인디케이터 -->
+          <div class="audio-indicator">
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <span style="color:white; font-size:1.5vw; font-weight:700; margin-left:4px;">음성 재생 중</span>
+          </div>
+
+          <!-- 말풍선 (텍스트는 JS가 페이지별로 교체) -->
+          <div class="story-speech">
+            <p id="storyText">짜잔! 난 모네 아저씨야!</p>
+            <div class="story-nav">
+              <button class="nav-arrow" id="prevBtn" onclick="changeStoryPage(-1)" disabled>◀</button>
+              <span class="story-page-num" id="pageNum">1 / 6</span>
+              <button class="nav-arrow" id="nextBtn" onclick="changeStoryPage(1)">▶</button>
+            </div>
+          </div>
+
+          <!-- 팩트 박스 이미지 — src 경로만 바꾸면 교체 -->
+          <div class="fact-box" id="factBox">
+            <img src="images/suryeon-fact.png" alt="수련 설명">
+          </div>
+
+          <!-- 진행 점 & 시작 버튼 (JS가 표시/숨김 제어) -->
+          <div class="story-dots" id="storyDots"></div>
+          <button class="story-start-btn" id="startDrawBtn" onclick="goToScreen('screen-drawing')">
+            🖍️ 지금 그려볼까?
+          </button>
+
+          <!-- 자동 진행 프로그레스바 -->
+          <div class="auto-progress">
+            <div class="auto-progress-fill" id="autoProgressFill" style="width:0%"></div>
+          </div>
+
+        </div>
+
+        <!-- ════════════════════════════
+             05. 그리기 화면
+             (드로잉 없음 — 수련 전체 감상 + 배경음악)
+        ════════════════════════════ -->
+        <div class="screen" id="screen-drawing">
+
+          <!-- 헤더 -->
+          <div class="drawing-header">
+            <button class="back-btn" style="font-size:1vw; padding:1vw 2vw;" onclick="goToScreen('screen-story')">←
+              뒤로</button>
+            <span class="drawing-title">🎨 모네의 수련을 감상하며 그려봐요</span>
+            <!-- 배경음악 태그 — src 경로에 음악 파일 넣으면 자동 재생 -->
+            <!-- <audio id="bgMusic" loop>
+            <source src="images/bgm.mp3" type="audio/mpeg">
+          </audio> -->
+            <!-- <span class="drawing-music-badge">🎵 음악 재생 중</span> -->
+          </div>
+
+          <!-- 수련 이미지 전체 화면 — src 경로만 바꾸면 교체 -->
+          <img class="drawing-fullimg" src="images/monet-waterlilies.png" alt="모네의 수련">
+
+          <!-- 하단 안내 문구 -->
+          <div class="drawing-guide">
+            <span class="drawing-guide-icon">✏️</span>
+            <span class="drawing-guide-text">워크북을 보며 수련을 자유롭게 그려봐요!</span>
+          </div>
+
+          <!-- 다 그렸어요 버튼 -->
+          <button class="done-btn" onclick="goToScreen('screen-result')">✅ 다 그렸어요!</button>
+
+        </div>
+
+        <!-- ════════════════════════════
+             06. 결과 화면
+             (모네 캐릭터 칭찬 화면)
+        ════════════════════════════ -->
+        <div class="screen" id="screen-result">
+
+          <!-- 반짝이 파티클 (JS가 생성) -->
+          <canvas id="particleCanvas"></canvas>
+          <div class="sparkle-container" id="sparkleContainer"></div>
+
+          <!-- 수련 이미지 배경 (어둡게) -->
+          <img class="praise-bg" src="images/monet-waterlilies.png" alt="">
+
+          <!-- 칭찬 화면 레이아웃 -->
+          <div class="praise-screen">
+
+            <!-- 왼쪽: 모네 캐릭터 — src 경로만 바꾸면 교체 -->
+            <div class="praise-char-area">
+              <img class="praise-char-img" src="images/mone-7.png" alt="모네 캐릭터">
+            </div>
+
+            <!-- 오른쪽: 말풍선 + 버튼 -->
+            <div class="praise-content">
+
+              <!-- 말풍선 -->
+              <div class="praise-bubble">
+                <!-- 칭찬 제목 — 텍스트 직접 수정 가능 -->
+                <p class="praise-bubble-title">✨ 정말 멋지게 그렸어요!</p>
+                <!-- 칭찬 본문 — 텍스트 직접 수정 가능 -->
+                <p class="praise-bubble-body">
+                  하윤이가 종이에 그린 수련이<br>
+                  모네 아저씨 그림만큼 아름다워요! 🌸<br>
+                  다음에도 같이 그려봐요!
+                </p>
+              </div>
+
+              <!-- 스티커 획득 뱃지 -->
+              <div class="praise-sticker">
+                <span>⭐</span>
+                <span class="praise-sticker-text">오늘의 스티커 획득!</span>
+              </div>
+
+              <!-- 버튼 -->
+              <div class="praise-actions">
+                <button class="action-btn btn-gallery" onclick="goToScreen('screen-gallery')">🖼️ 갤러리</button>
+                <button class="action-btn btn-share">📤 공유하기</button>
+                <button class="action-btn btn-next" onclick="goToScreen('screen-home')">🏠 홈으로</button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div><!-- tablet-screen -->
+    </div><!-- tablet-frame -->
+  </div><!-- app-wrapper -->
+
+  <!-- ══════════════════════════════════════
+       JavaScript — 인터랙션 전용
+       (화면 전환 / 스토리 / 그리기 / 결과 파티클)
+  ══════════════════════════════════════ -->
+  <script src="index.js"></script>
+  <!-- <script src="scroll.js"></script> -->
+</body>
+
+</html>
